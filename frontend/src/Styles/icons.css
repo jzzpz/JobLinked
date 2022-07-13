@@ -1,0 +1,20 @@
+.icon {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.iconForTitle {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.titleIconPair {
+  display: grid;
+  grid-template-columns: 35px auto;
+}
+
+.hidden {
+  visibility: collapse;
+  position: absolute;
+}

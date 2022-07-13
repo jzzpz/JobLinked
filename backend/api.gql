@@ -1,0 +1,181 @@
+type Query {
+  signInUser(email: String!, password: String!): String
+  getProfile(id: Int!): Profile
+  getUniqueJobFields(fields: [String!]!): [uniqueJobFields!]!
+  didIApply(userId: Int!): [Int!]!
+  getFilteredJobs(
+    title: IndJobFilter
+    location: IndJobFilter
+    key_description: IndJobFilter
+    page: Int!
+  ): getFilteredJobsResult
+  logoutUser: Boolean
+  getJobPosting(authorId: Int!, page: Int!): [JobPosting]
+  getEducationList(userid: Int!, page: Int = 0): EducationListResult
+  getJobExperienceList(userid: Int!, page: Int = 0): JobExperienceResult
+  getInterview(id: Int!): Interview
+  getUserInterviews(userid: Int!, page: Int = 0): getUserInterviewsResult
+  getApplicants(jobId: Int!): [applicantInfo]
+  getInterviewByEmployerAndEmployee(
+    employee: Int!
+    employer: Int!
+    jobPostingId: Int!
+  ): Interview
+  getReviews(companyId: Int!, page: Int = 0): getReviewResult
+  checkProfileExists(email: String!): Boolean!
+}
+
+type JobExperienceResult {
+  values: [JobExperience]
+  lastPage: Boolean!
+}
+
+type getReviewResult {
+  values: [companyReview]
+  lastPage: Boolean!
+}
+
+type companyReview {
+  id: Int!
+  reviewer: String!
+  rating: Int!
+  description: String!
+}
+
+type getUserInterviewsResult {
+  interviews: [Interview]
+  isLastPage: Boolean
+}
+
+type applicantInfo {
+  id: Int!
+  name: String
+}
+
+type Interview {
+  employee: Int!
+  employer: Int!
+  date_time: String!
+  company: String!
+  position: String!
+  title: String
+  id: Int!
+}
+
+type getFilteredJobsResult {
+  values: [Job!]!
+  lastPage: Boolean
+}
+input IndJobFilter {
+  values: [String!]!
+  setAll: Boolean
+}
+type uniqueJobFields {
+  key: String!
+  values: [String!]!
+}
+
+type User {
+  email: String
+}
+type JobExperience {
+  id: Int!
+  title: String!
+  country: String!
+  description: String!
+  company: String!
+}
+
+type EducationListResult {
+  values: [Education!]!
+  lastPage: Boolean
+}
+
+type Education {
+  id: Int!
+  school: String!
+  degree: String!
+  gpa: String
+  awards: String
+}
+
+type Profile {
+  name: String!
+  about: String
+  location: String
+  user_type: String!
+  id: Int!
+}
+
+type Job {
+  title: String!
+  location: String!
+  company: String!
+  qualification: String!
+  key_description: String!
+  description: String!
+  deadline: String!
+  author_id: Int!
+  id: Int!
+}
+
+type JobPosting {
+  id: Int!
+  title: String!
+  location: String!
+  qualification: String!
+  keyDescription: String!
+  description: String!
+  deadline: String!
+}
+
+type Mutation {
+  signUpUser(
+    name: String!
+    password: String!
+    email: String!
+    userType: String!
+  ): Boolean
+  applyJob(userId: Int!, jobId: Int!): Boolean
+  createJobPosting(
+    authorId: Int!
+    title: String!
+    location: String!
+    qualification: String!
+    keyDescription: String!
+    description: String!
+    deadline: String!
+  ): Boolean
+  deleteJobPosting(id: Int!): Boolean
+  updateAbout(
+    id: Int!
+    name: String!
+    location: String!
+    about: String!
+  ): Boolean
+  addEducation(
+    school: String!
+    degree: String!
+    gpa: String
+    awards: String
+    userid: Int!
+  ): Boolean
+  deleteEducation(id: Int!): Boolean
+  addJobExperience(
+    title: String!
+    country: String!
+    description: String!
+    company: String!
+    userid: Int!
+  ): Boolean
+  deleteJobExperience(id: Int!): Boolean
+  addInterview(
+    employee: Int!
+    employer: Int!
+    jobPostingId: Int!
+    datetime: String!
+  ): Boolean
+  deleteInterview(id: Int!): Boolean
+  addReview(reviewer: Int!, company: Int!, rating: Int!, desc: String!): Boolean
+  deleteReview(id: Int!): Boolean
+}

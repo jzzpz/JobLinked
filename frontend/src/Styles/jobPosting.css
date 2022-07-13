@@ -1,0 +1,11 @@
+#added-job-desc-sentences {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.job-desc-sentence {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    border-radius: 100px;
+}

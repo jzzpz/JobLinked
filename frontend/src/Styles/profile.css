@@ -1,0 +1,19 @@
+.profileList {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.next-page-button {
+  float: right;
+}
+
+.prev-page-button {
+  float: left;
+}
+
+.jobCard {
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #f1f1f1;
+  margin: 5px;
+}
