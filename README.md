@@ -55,7 +55,7 @@ We made it a priority to deploy our application early and after every merge into
 
 1. Dynamic Querying of Job Postings: The main problem with this feature was that it required us to dynamically query our job postings sql table as users input fields into the filter section of the job board. We had to leverage React.useState and useEffect to listen to filter changes and then create a dynamic query that represented these filter requests, grab the specific job\_postings and paginate those results on top of it. 
 
-## Contributions
+<!-- ## Contributions
 
 ### Zhi Ping Zhuang:
 
@@ -85,7 +85,7 @@ We made it a priority to deploy our application early and after every merge into
 - Created authentication system to ensure endpoints are protected and secured so they can only be called when a user is signed in
 - Created Chat Room to allow users to have real time communication with an employer using web sockets
 - Created Reviews page to allow JOB\_SEEKER’s to leave reviews about their experience at the company
-
+ -->
 
 
 ## One more thing? 
